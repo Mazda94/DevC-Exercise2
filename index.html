@@ -1,11 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Exercise 2</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
+
 <body>
-    <center>
-        <h1>Kalkulator</h1>
-    </center>
+    <div class="jumbotron" id="Header">
+        <h1 id="title" class="display-4">JavaScript Course</h1>
+        <p class="lead" id="subTitle"></p>
+        <hr class="my-4">
+        <p>Pada pertemuan ke-2, workshop ini membahas mengenai Document Object Model</p>
+        <button id="showCalculator" class="btn btn-info" onclick="showCalculator()"></button>
+    </div>
+
+    <div class="container col-lg-4" style="margin-bottom: 24px" id="calculatorLayout">
+        <div class="card">
+            <div class="card-header">Program Kalkulator</div>
+            <div class="card-body">
+                <input type="text" class="form-control" style="margin-bottom: 12px" id="value_1" placeholder="Masukkan nilai ke-1">
+                <input type="text" class="form-control" id="value_2" placeholder="Masukkan nilai ke-2">
+                <br />
+                <select class="form form-control" id="option" style="margin-bottom: 8px" >
+                    <option value="+">"+" ( Tambah )</option>
+                    <option value="-">"-" ( Kurang )</option>
+                    <option value="/">"/" ( Bagi )</option>
+                    <option value="*">"*" ( Kali )</option>
+                    <option value="%">"%" ( Modulo )</option>                    
+                </select>
+                <input type="text" class="form-control" placeholder="Hasil" id="result" disabled>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary col-sm-2" onclick="hitung()">Hitung</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("subTitle").innerHTML = "JavaScript DOM";
+        document.getElementById("showCalculator").innerHTML = "Open Calculator";
+        document.getElementById("calculatorLayout").style.display = "none";
+
+        var layoutCalculator = document.getElementById("calculatorLayout");
+        function showCalculator() {
+            if (layoutCalculator.style.display === "none") {
+                layoutCalculator.style.display = "block";
+            } else {
+                layoutCalculator.style.display = "none";
+            }
+        }
+
+        function hitung() {
+            var option = document.getElementById("option");
+            var operator = option.options[option.selectedIndex].value;
+            var value_1 = document.getElementById("value_1").value;
+            var value_2 = document.getElementById("value_2").value;
+            var result;
+
+            if (operator === "+") {
+                result = parseInt(value_1) + parseInt(value_2);
+            } else if (operator === "-") {
+                result = parseInt(value_1) - parseInt(value_2);
+            } else if (operator === "/") {
+                result = parseInt(value_1) / parseInt(value_2);
+            } else if (operator === "*") {
+                result = parseInt(value_1) * parseInt(value_2);
+            } else if (operator === "%") {
+                result = parseInt(value_1) % parseInt(value_2);
+            }
+
+            document.getElementById("result").value = result;
+        }
+    </script>
 </body>
+
 </html>
