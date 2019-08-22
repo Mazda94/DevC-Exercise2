@@ -47,8 +47,10 @@
         function showCalculator() {
             if (layoutCalculator.style.display === "none") {
                 layoutCalculator.style.display = "block";
+                document.getElementById("showCalculator").innerHTML = "Hide Calculator";
             } else {
                 layoutCalculator.style.display = "none";
+                document.getElementById("showCalculator").innerHTML = "Show Calculator";
             }
         }
 
@@ -70,6 +72,7 @@
             } else if (operator === "%") {
                 result = parseInt(value_1) % parseInt(value_2);
             }
+
             document.getElementById("result").value = result;
         }
     </script>
